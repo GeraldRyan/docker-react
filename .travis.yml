@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services: 
+ - docker
+
+before_install: 
+ - docker build -t gcryan/docker-react -f Dockerfile.dev . 
+
+script:
+ - docker run -e CI=true gcryan/docker-react npm run test
